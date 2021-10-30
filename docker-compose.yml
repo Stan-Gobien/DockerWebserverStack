@@ -3,7 +3,8 @@ services:
   nginx:
     image: nginx
     restart: always
-    cpu_percent: 20    
+    cpu_percent: 20 
+    mem_limit: 256m
     environment:
       - AMPLIFY_IMAGENAME=docker-nginx
     ports:
@@ -24,7 +25,8 @@ services:
 php-fpm:
     image: php:8-fpm
     restart: always
-    cpu_percent: 30        
+    cpu_percent: 30 
+    mem_limit: 512m    
     volumes:
       - ./config/php-fpm/php.ini:/usr/local/etc/php/php.ini:Z
     tmpfs:
@@ -33,7 +35,8 @@ php-fpm:
   db:
     image: mariadb
     restart: always
-    cpu_percent: 20        
+    cpu_percent: 20 
+    mem_limit: 512m    
     environment:
       MYSQL_ROOT_PASSWORD=notSecureChangeMe
     volumes:
@@ -44,7 +47,8 @@ php-fpm:
  phpmyadmin:
     image: phpmyadmin:fpm-alpine
     restart: always
-    cpu_percent: 5        
+    cpu_percent: 5 
+    mem_limit: 256m    
     environment:
       PMA_ARBITRARY=1      
     volumes:
