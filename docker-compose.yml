@@ -1,0 +1,57 @@
+version: '2'
+services:
+  nginx:
+    image: nginx:latest
+    restart: always
+    environment:
+      - AMPLIFY_IMAGENAME=docker-nginx
+    links:
+      - php-fpm
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./config/nginx/conf.d:/etc/nginx/conf.d:Z
+      - ./config/nginx/templates:/etc/nginx/templates:Z
+      - ./logs:/var/log/nginx:Z      
+      - ./data/nginx/certificates:/nginx/certificates:z
+      - ./data/vhosts:/data/vhosts:z
+    depends_on:
+      - db
+      - php-fpm
+
+php-fpm:
+    image: php:7-fpm
+    restart: always
+    volumes:    
+
+  db:
+    image: madiadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD=notSecureChangeMe
+      PMA_ARBITRARY=1
+    volumes:
+      - ./data/mysql:/var/lib/mysql:Z
+
+ phpmyadmin:
+    image: phpmyadmin:fpm-alpine
+    restart: always
+    environment:
+      PMA_HOST: db
+      PMA_USER: root # Remove line for production
+      PMA_PASSWORD: root # Remove line for production
+    volumes:
+      - ./config/db/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php:Z
+    depends_on:
+      - db
+    ports:
+      - "8080:80"
+      
+
+  data:
+    image: alpine:latest
+    command: echo "READY!!!"
+    volumes:
+      - ./data/vhosts:/vhosts
+      - ./data/tmp:/tmp
