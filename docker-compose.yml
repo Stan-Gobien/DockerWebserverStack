@@ -14,6 +14,8 @@ services:
       - ./logs:/var/log/nginx:Z      
       - ./data/nginx/certificates:/nginx/certificates:z
       - ./data/vhosts:/data/vhosts:z
+    tmpfs:
+      - /tmp
     depends_on:
       - db
       - php-fpm
@@ -23,6 +25,8 @@ php-fpm:
     restart: always
     volumes:
       - ./config/php-fpm/php.ini:/usr/local/etc/php/php.ini:Z
+    tmpfs:
+      - /tmp      
 
   db:
     image: mariadb
@@ -31,8 +35,8 @@ php-fpm:
       MYSQL_ROOT_PASSWORD=notSecureChangeMe
     volumes:
       - ./data/mysql:/var/lib/mysql:Z
-    networks:
-      - webserverstack      
+    tmpfs:
+      - /tmp  
 
  phpmyadmin:
     image: phpmyadmin:fpm-alpine
@@ -41,6 +45,8 @@ php-fpm:
       PMA_ARBITRARY=1      
     volumes:
       - ./config/db/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php:Z
+    tmpfs:
+      - /tmp      
     depends_on:
       - db
     ports:
