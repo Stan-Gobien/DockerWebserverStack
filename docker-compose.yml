@@ -31,8 +31,8 @@ php-fpm:
       - ./config/php-fpm/php.ini:/usr/local/etc/php/php.ini:Z
     tmpfs:
       - /tmp      
-
-  db:
+      
+ db:
     image: mariadb
     restart: always
     cpu_percent: 20 
