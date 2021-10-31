@@ -14,7 +14,7 @@ services:
     volumes:
       - ./config/nginx/conf.d:/etc/nginx/conf.d:Z
       - ./config/nginx/templates:/etc/nginx/templates:Z
-      - ./logs:/var/log/nginx:Z      
+      - ./logs/nginx:/var/log/nginx:Z      
       - ./data/nginx/certificates:/nginx/certificates:z
       - ./data/vhosts:/data/vhosts:z
     tmpfs:
@@ -54,9 +54,10 @@ php-fpm:
     mem_limit: 256m
     memswap_limit: 512m    
     environment:
-      PMA_ARBITRARY=1      
+      PMA_ARBITRARY=1
+      PMA_ABSOLUTE_URI=https://phpmyadmin.gobien.be/
     volumes:
-      - ./config/db/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php:Z
+      - ./config/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php:Z
     tmpfs:
       - /tmp      
     depends_on:
