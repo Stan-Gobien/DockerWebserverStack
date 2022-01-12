@@ -20,6 +20,9 @@ services:
     depends_on:
       - db
       - php-fpm
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+      
 
   php-fpm:
     image: php:8-fpm
@@ -30,7 +33,9 @@ services:
     volumes:
       - /data/containers/webserverstack/config/php-fpm/php.ini:/usr/local/etc/php/php.ini:Z
     tmpfs:
-      - /tmp      
+      - /tmp
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"      
       
   db:
     image: mariadb
@@ -39,21 +44,26 @@ services:
     mem_limit: 512m
     memswap_limit: 1024m    
     environment:
-      - MYSQL_ROOT_PASSWORD="notSecureChangeMe!"
+      MYSQL_ROOT_PASSWORD: notSecureChangeMe!
+      MYSQL_DATABASE: default
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: sqlmy
     volumes:
       - /data/containers/webserverstack/data/mysql:/var/lib/mysql:Z
     tmpfs:
-      - /tmp  
+      - /tmp
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"      
 
   phpmyadmin:
-    image: phpmyadmin:fpm-alpine
+    image: phpmyadmin:latest
     restart: always
     cpu_percent: 5 
     mem_limit: 256m
     memswap_limit: 512m    
     environment:
-      - PMA_ARBITRARY=1
-      - PMA_ABSOLUTE_URI="https://phpmyadmin.ares.gobien.be/"
+      PMA_ARBITRARY: 1
+      PMA_ABSOLUTE_URI: https://phpmyadmin.ares.gobien.be/
     volumes:
       - /data/containers/webserverstack/config/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php:Z
     tmpfs:
@@ -62,3 +72,5 @@ services:
       - db
     ports:
       - "8181:80"
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"     
