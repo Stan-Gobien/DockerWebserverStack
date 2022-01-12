@@ -6,8 +6,6 @@ services:
     cpu_percent: 20 
     mem_limit: 256m
     memswap_limit: 512m
-    environment:
-      - AMPLIFY_IMAGENAME=docker-nginx
     ports:
       - "80:80"
       - "443:443"
@@ -41,7 +39,7 @@ php-fpm:
     mem_limit: 512m
     memswap_limit: 1024m    
     environment:
-      MYSQL_ROOT_PASSWORD=notSecureChangeMe
+      MYSQL_ROOT_PASSWORD=notSecureChangeMe!
     volumes:
       - ./data/mysql:/var/lib/mysql:Z
     tmpfs:
@@ -55,7 +53,7 @@ php-fpm:
     memswap_limit: 512m    
     environment:
       PMA_ARBITRARY=1
-      PMA_ABSOLUTE_URI=https://phpmyadmin.gobien.be/
+      PMA_ABSOLUTE_URI=https://phpmyadmin.ares.gobien.be/
     volumes:
       - ./config/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php:Z
     tmpfs:
