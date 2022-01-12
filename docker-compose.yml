@@ -10,11 +10,11 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./config/nginx/conf.d:/etc/nginx/conf.d:Z
-      - ./config/nginx/templates:/etc/nginx/templates:Z
-      - ./logs/nginx:/var/log/nginx:Z      
-      - ./data/nginx/certificates:/nginx/certificates:z
-      - ./data/vhosts:/data/vhosts:z
+      - /data/containers/webserverstack/config/nginx/conf.d:/etc/nginx/conf.d:Z
+      - /data/containers/webserverstack/config/nginx/templates:/etc/nginx/templates:Z
+      - /data/containers/webserverstack/logs/nginx:/var/log/nginx:Z      
+      - /data/containers/webserverstack/data/nginx/certificates:/nginx/certificates:z
+      - /data/containers/webserverstack/data/vhosts:/data/vhosts:z
     tmpfs:
       - /tmp
     depends_on:
@@ -28,7 +28,7 @@ services:
     mem_limit: 512m
     memswap_limit: 1024m    
     volumes:
-      - ./config/php-fpm/php.ini:/usr/local/etc/php/php.ini:Z
+      - /data/containers/webserverstack/config/php-fpm/php.ini:/usr/local/etc/php/php.ini:Z
     tmpfs:
       - /tmp      
       
@@ -41,7 +41,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD="notSecureChangeMe!"
     volumes:
-      - ./data/mysql:/var/lib/mysql:Z
+      - /data/containers/webserverstack/data/mysql:/var/lib/mysql:Z
     tmpfs:
       - /tmp  
 
@@ -55,7 +55,7 @@ services:
       - PMA_ARBITRARY=1
       - PMA_ABSOLUTE_URI="https://phpmyadmin.ares.gobien.be/"
     volumes:
-      - ./config/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php:Z
+      - /data/containers/webserverstack/config/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php:Z
     tmpfs:
       - /tmp      
     depends_on:
