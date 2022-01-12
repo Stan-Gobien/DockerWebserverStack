@@ -21,7 +21,7 @@ services:
       - db
       - php-fpm
 
-php-fpm:
+  php-fpm:
     image: php:8-fpm
     restart: always
     cpu_percent: 30 
@@ -32,7 +32,7 @@ php-fpm:
     tmpfs:
       - /tmp      
       
- db:
+  db:
     image: mariadb
     restart: always
     cpu_percent: 20 
@@ -45,7 +45,7 @@ php-fpm:
     tmpfs:
       - /tmp  
 
- phpmyadmin:
+  phpmyadmin:
     image: phpmyadmin:fpm-alpine
     restart: always
     cpu_percent: 5 
