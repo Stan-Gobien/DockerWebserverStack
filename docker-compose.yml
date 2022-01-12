@@ -39,7 +39,7 @@ services:
     mem_limit: 512m
     memswap_limit: 1024m    
     environment:
-      MYSQL_ROOT_PASSWORD=notSecureChangeMe!
+      - MYSQL_ROOT_PASSWORD="notSecureChangeMe!"
     volumes:
       - ./data/mysql:/var/lib/mysql:Z
     tmpfs:
@@ -52,8 +52,8 @@ services:
     mem_limit: 256m
     memswap_limit: 512m    
     environment:
-      PMA_ARBITRARY=1
-      PMA_ABSOLUTE_URI=https://phpmyadmin.ares.gobien.be/
+      - PMA_ARBITRARY=1
+      - PMA_ABSOLUTE_URI="https://phpmyadmin.ares.gobien.be/"
     volumes:
       - ./config/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php:Z
     tmpfs:
