@@ -65,7 +65,7 @@ services:
       PMA_ARBITRARY: 1
       PMA_ABSOLUTE_URI: https://phpmyadmin.ares.gobien.be/
     volumes:
-      - /data/containers/webserverstack/config/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php:Z
+      - /data/containers/webserverstack/config/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
     tmpfs:
       - /tmp      
     depends_on:
