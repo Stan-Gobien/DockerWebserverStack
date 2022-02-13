@@ -11,6 +11,7 @@ services:
       - "443:443"
     volumes:
       - /data/containers/webserverstack/config/nginx/conf.d:/etc/nginx/conf.d:Z
+      - /data/containers/webserverstack/config/nginx/global:/etc/nginx/global:Z
       - /data/containers/webserverstack/config/nginx/templates:/etc/nginx/templates:Z
       - /data/containers/webserverstack/logs/nginx:/var/log/nginx:Z      
       - /data/containers/webserverstack/data/nginx/certificates:/nginx/certificates:z
