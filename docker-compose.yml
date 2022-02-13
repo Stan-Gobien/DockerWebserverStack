@@ -33,6 +33,7 @@ services:
     memswap_limit: 1024m    
     volumes:
       - /data/containers/webserverstack/config/php-fpm/php.ini:/usr/local/etc/php/php.ini:Z
+      - /data/containers/webserverstack/config/php-fpm/php-fpm.d/log.conf:/usr/local/etc/php-fpm.d/zz-log.conf
       - /data/containers/webserverstack/data/vhosts:/data/vhosts:z      
     tmpfs:
       - /tmp
