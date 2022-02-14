@@ -56,3 +56,22 @@ services:
       - /tmp
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
+      
+  phpmyadmin:
+    image: phpmyadmin
+    restart: unless-stopped
+    cpu_percent: 20 
+    mem_limit: 256m
+    memswap_limit: 512m   
+    links:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    tmpfs:
+      - /tmp
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+    ports:
+      - 8081:80
