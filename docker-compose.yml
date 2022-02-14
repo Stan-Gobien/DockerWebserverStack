@@ -46,7 +46,7 @@ services:
     mem_limit: 512m
     memswap_limit: 1024m    
     environment:
-      MYSQL_ROOT_PASSWORD: notSecureChangeMe!
+      MARIADB_ROOT_PASSWORD: notSecureChangeMe!
       MYSQL_DATABASE: default
       MYSQL_USER: mysql
       MYSQL_PASSWORD: sqlmy
@@ -68,7 +68,7 @@ services:
     environment:
       PMA_HOST: db
       PMA_PORT: 3306
-      PMA_ARBITRARY: 1
+      PMA_ARBITRARY: 0
     tmpfs:
       - /tmp
     labels:
