@@ -30,7 +30,10 @@ services:
     restart: always
     cpu_percent: 30 
     mem_limit: 512m
-    memswap_limit: 1024m    
+    memswap_limit: 1024m
+    links:
+      - db    
+    # command: "docker-php-ext-install mysqli"
     volumes:
       - /data/containers/webserverstack/config/php-fpm/conf.d:/usr/local/etc/php/conf.d:Z
       - /data/containers/webserverstack/data/vhosts:/data/vhosts:z      
