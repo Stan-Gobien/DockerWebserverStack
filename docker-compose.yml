@@ -46,12 +46,13 @@ services:
     mem_limit: 512m
     memswap_limit: 1024m    
     environment:
-      MARIADB_ROOT_PASSWORD: notSecureChangeMe!
-      MYSQL_DATABASE: default
-      MYSQL_USER: mysql
-      MYSQL_PASSWORD: sqlmy
+      MARIADB_ROOT_PASSWORD: notSecureChangeMe
+      MARIADB_DATABASE: default
+      MARIADB_USER: sqluser
+      MARIADB_PASSWORD: usersql
     volumes:
       - /data/containers/webserverstack/data/mysql:/var/lib/mysql:Z
+      - /data/containers/webserverstack/backup/mysql:/backup:Z
     tmpfs:
       - /tmp
     labels:
