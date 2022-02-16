@@ -80,3 +80,21 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
     ports:
       - 8081:80
+      
+  acme.sh:
+    image: neilpang/acme.sh:latest
+    volumes:
+      - /data/containers/webserverstack/config/acme.sh/acme.sh-docker.sh:/acme.sh-docker.sh:ro
+      - ${ACME_HOME_DIR:-./acme.sh}:/acme.sh
+    environment:
+      ACME_HOME_DIR: "/data/containers/webserverstack/config/acme.sh/acme.sh"
+      # CloudFlare
+      CF_Token: "0Lj2BZLzceZyza3U4-3xh4DlmwqyXvFVRM6x180o"
+      CF_Account_ID: "25112ee878751d122d2efdb921b725fc"
+      DNS_API: "dns_cf"
+      DOMAIN_NAME: "ares.gobien.be"
+      ACME_SH_EMAIL: "stan@gobien.be"
+    command: sh ./acme.sh-docker.sh
+    container_name: acme.sh
+    labels:
+        - "com.centurylinklabs.watchtower.enable=true"
