@@ -84,7 +84,7 @@ services:
   acme.sh:
     image: neilpang/acme.sh:latest
     volumes:
-      - /data/containers/webserverstack/config/acme.sh/acme.sh-docker.sh:/acme.sh-docker.sh:roZ
+      - /data/containers/webserverstack/config/acme.sh/acme.sh-docker.sh:/acme.sh-docker.sh:ro
       - /data/containers/webserverstack/data/certificates:/acme.sh:z
     environment:
       ACME_HOME_DIR: "/acme.sh"
