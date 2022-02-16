@@ -95,6 +95,5 @@ services:
       DOMAIN_NAME: "ares.gobien.be"
       ACME_SH_EMAIL: "stan@gobien.be"
     command: sh ./acme.sh-docker.sh
-    container_name: acme.sh
     labels:
         - "com.centurylinklabs.watchtower.enable=true"
