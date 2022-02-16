@@ -14,7 +14,7 @@ services:
       - /data/containers/webserverstack/config/nginx/global:/etc/nginx/global:Z
       - /data/containers/webserverstack/config/nginx/templates:/etc/nginx/templates:Z
       - /data/containers/webserverstack/logs/nginx:/var/log/nginx:Z      
-      - /data/containers/webserverstack/data/nginx/certificates:/nginx/certificates:z
+      - /data/containers/webserverstack/data/certificates:/certificates:z
       - /data/containers/webserverstack/data/vhosts:/data/vhosts:z
     tmpfs:
       - /tmp
@@ -84,12 +84,12 @@ services:
   acme.sh:
     image: neilpang/acme.sh:latest
     volumes:
-      - /data/containers/webserverstack/config/acme.sh/acme.sh-docker.sh:/acme.sh-docker.sh:ro
-      - ${ACME_HOME_DIR:-./acme.sh}:/acme.sh
+      - /data/containers/webserverstack/config/acme.sh/acme.sh-docker.sh:/acme.sh-docker.sh:ro:Z
+      - /data/containers/webserverstack/data/certificates:/acme.sh:z
     environment:
-      ACME_HOME_DIR: "/data/containers/webserverstack/config/acme.sh/acme.sh"
+      ACME_HOME_DIR: "/acme.sh"
       # CloudFlare
-      CF_Token: "0Lj2BZLzceZyza3U4-3xh4DlmwqyXvFVRM6x180o"
+      CF_Token: "TXIrTwW5V8Gg059dznAsGmY1vmG7bdch63ZXkfW2"
       CF_Account_ID: "25112ee878751d122d2efdb921b725fc"
       DNS_API: "dns_cf"
       DOMAIN_NAME: "ares.gobien.be"
