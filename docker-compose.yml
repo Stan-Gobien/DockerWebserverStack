@@ -26,7 +26,7 @@ services:
       
 
   php-fpm:
-    build: https://github.com/Stan-Gobien/DockerWebserverStack/blob/main/PHP-FPM/Dockerfile
+    build: /data/containers/webserverstack/config/php-fpm/build/
     restart: always
     cpu_percent: 30 
     mem_limit: 512m
