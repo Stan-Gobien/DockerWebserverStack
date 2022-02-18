@@ -35,7 +35,8 @@ services:
       - db
     volumes:
       - /data/containers/webserverstack/config/php-fpm/conf.d:/usr/local/etc/php/conf.d:Z
-      - /data/containers/webserverstack/data/vhosts:/data/vhosts:z      
+      - /data/containers/webserverstack/data/vhosts:/data/vhosts:z
+      - /data/containers/webserverstack/config/php-fpm/ssmtp.conf:/etc/ssmtp/ssmtp.conf:Z
     tmpfs:
       - /tmp
     labels:
