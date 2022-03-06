@@ -3,7 +3,6 @@ services:
   nginx:
     image: nginx
     restart: always
-    cpu_percent: 20 
     mem_limit: 256m
     memswap_limit: 512m
     ports:
@@ -28,7 +27,6 @@ services:
   php-fpm:
     build: https://raw.githubusercontent.com/Stan-Gobien/Docker-PHP-FPM/main/Dockerfile
     restart: always
-    cpu_percent: 30 
     mem_limit: 512m
     memswap_limit: 1024m
     links:
@@ -45,7 +43,6 @@ services:
   db:
     image: mariadb
     restart: always
-    cpu_percent: 20 
     mem_limit: 512m
     memswap_limit: 1024m    
     environment:
@@ -64,7 +61,6 @@ services:
   phpmyadmin:
     image: phpmyadmin
     restart: unless-stopped
-    cpu_percent: 20 
     mem_limit: 256m
     memswap_limit: 512m   
     links:
