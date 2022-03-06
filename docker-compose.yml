@@ -85,10 +85,10 @@ services:
     environment:
       ACME_HOME_DIR: "/acme.sh"
       # CloudFlare
-      CF_Token: "TXIrTwW5V8Gg059dznAsGmY1vmG7bdch63ZXkfW2"
+      CF_Token: "0Lj2BZLzceZyza3U4-3xh4DlmwqyXvFVRM6x180o"
       CF_Account_ID: "25112ee878751d122d2efdb921b725fc"
       DNS_API: "dns_cf"
-      DOMAIN_NAME: "ares.gobien.be"
+      DOMAIN_NAME: "gobien.be"
       ACME_SH_EMAIL: "stan@gobien.be"
     command: sh ./acme.sh-docker.sh
     labels:
