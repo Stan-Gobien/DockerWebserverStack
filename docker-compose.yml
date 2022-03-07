@@ -1,4 +1,8 @@
 version: '2.4'
+networks:
+  mailserver-webserver-network:
+    external:
+       name: mailserver-webserver-network
 services:
   nginx:
     image: nginx
@@ -8,6 +12,8 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    networks:
+      - mailserver-webserver-network
     volumes:
       - /data/containers/webserverstack/config/nginx/conf.d:/etc/nginx/conf.d:Z
       - /data/containers/webserverstack/config/nginx/global:/etc/nginx/global:Z
@@ -31,6 +37,8 @@ services:
     memswap_limit: 1024m
     links:
       - db
+    networks:
+      - mailserver-webserver-network      
     volumes:
       - /data/containers/webserverstack/config/php-fpm/conf.d:/usr/local/etc/php/conf.d:Z
       - /data/containers/webserverstack/data/vhosts:/data/vhosts:z
@@ -50,6 +58,8 @@ services:
       MARIADB_DATABASE: default
       MARIADB_USER: sqluser
       MARIADB_PASSWORD: usersql
+    networks:
+      - mailserver-webserver-network      
     volumes:
       - /data/containers/webserverstack/data/mysql:/var/lib/mysql:Z
       - /data/containers/webserverstack/backup/mysql:/backup:Z
@@ -65,6 +75,8 @@ services:
     memswap_limit: 512m   
     links:
       - db
+    networks:
+      - mailserver-webserver-network      
     environment:
       PMA_HOST: db
       PMA_PORT: 3306
@@ -79,6 +91,8 @@ services:
       
   acme.sh:
     image: neilpang/acme.sh:latest
+    networks:
+      - mailserver-webserver-network    
     volumes:
       - /data/containers/webserverstack/config/acme.sh/acme.sh-docker.sh:/acme.sh-docker.sh:ro
       - /data/containers/webserverstack/data/certificates:/acme.sh:z
