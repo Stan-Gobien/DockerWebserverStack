@@ -26,6 +26,7 @@ services:
 
   php-fpm:
     build: https://raw.githubusercontent.com/Stan-Gobien/Docker-PHP-FPM/main/Dockerfile
+    image: php:8-fpm
     restart: always
     mem_limit: 512m
     memswap_limit: 1024m
