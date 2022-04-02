@@ -25,7 +25,7 @@ services:
       
 
   php-fpm:
-    build: https://raw.githubusercontent.com/Stan-Gobien/Docker-PHP-FPM/main/Dockerfile
+    build: https://raw.githubusercontent.com/Stan-Gobien/DockerWebserverStack/main/Docker-PHP-FPM/Dockerfile
     image: php-8-fpm-custom-stan:latest
     restart: always
     mem_limit: 512m
@@ -47,10 +47,11 @@ services:
     mem_limit: 512m
     memswap_limit: 1024m    
     environment:
-      MARIADB_ROOT_PASSWORD: notSecureChangeMe
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       MARIADB_DATABASE: default
-      MARIADB_USER: sqluser
-      MARIADB_PASSWORD: usersql
+      MARIADB_USER: ${DB_USER}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_ROOT_HOST: ${DB_STACKNETWORK}
     volumes:
       - /data/containers/webserverstack/data/mysql:/var/lib/mysql:Z
       - /data/containers/webserverstack/backup/mysql:/backup:Z
@@ -86,11 +87,11 @@ services:
     environment:
       ACME_HOME_DIR: "/acme.sh"
       # CloudFlare
-      CF_Token: "TXIrTwW5V8Gg059dznAsGmY1vmG7bdch63ZXkfW2"
-      CF_Account_ID: "25112ee878751d122d2efdb921b725fc"
+      CF_Token: "${CF_TOKEN}"
+      CF_Account_ID: "${CF_ACCOUNT_ID}"
       DNS_API: "dns_cf"
-      DOMAIN_NAME: "ares.gobien.be"
-      ACME_SH_EMAIL: "stan@gobien.be"
+      DOMAIN_NAME: "${DOMAIN_NAME}"
+      ACME_SH_EMAIL: "${EMAIL}"
     command: sh ./acme.sh-docker.sh
     labels:
         - "com.centurylinklabs.watchtower.enable=true"
