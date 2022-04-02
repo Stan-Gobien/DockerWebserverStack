@@ -101,11 +101,11 @@ services:
     environment:
       ACME_HOME_DIR: "/acme.sh"
       # CloudFlare
-      CF_Token: "0Lj2BZLzceZyza3U4-3xh4DlmwqyXvFVRM6x180o"
-      CF_Account_ID: "25112ee878751d122d2efdb921b725fc"
+      CF_Token: "${CF_TOKEN}"
+      CF_Account_ID: "${CF_ACCOUNT_ID}"
       DNS_API: "dns_cf"
-      DOMAIN_NAME: "gobien.be"
-      ACME_SH_EMAIL: "stan@gobien.be"
+      DOMAIN_NAME: "${DOMAIN_NAME}"
+      ACME_SH_EMAIL: "${EMAIL}"
     command: sh ./acme.sh-docker.sh
     labels:
         - "com.centurylinklabs.watchtower.enable=true"
