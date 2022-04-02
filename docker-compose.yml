@@ -31,7 +31,7 @@ services:
       
 
   php-fpm:
-    build: https://raw.githubusercontent.com/Stan-Gobien/Docker-PHP-FPM/main/Dockerfile
+    build: https://raw.githubusercontent.com/Stan-Gobien/DockerWebserverStack/cloud01/Docker-PHP-FPM/Dockerfile
     image: php-8-fpm-custom-cloud01:latest
     restart: always
     mem_limit: 512m
