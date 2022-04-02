@@ -32,7 +32,7 @@ services:
 
   php-fpm:
     build: https://raw.githubusercontent.com/Stan-Gobien/Docker-PHP-FPM/main/Dockerfile
-    image: php-8-fpm-custom-stan:latest
+    image: php-8-fpm-custom-cloud01:latest
     restart: always
     mem_limit: 512m
     memswap_limit: 1024m
@@ -55,10 +55,11 @@ services:
     mem_limit: 512m
     memswap_limit: 1024m    
     environment:
-      MARIADB_ROOT_PASSWORD: notSecureChangeMe
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       MARIADB_DATABASE: default
-      MARIADB_USER: sqluser
-      MARIADB_PASSWORD: usersql
+      MARIADB_USER: ${DB_USER}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_ROOT_HOST: ${DB_STACKNETWORK}
     networks:
       - mailserver-webserver-network      
     volumes:
