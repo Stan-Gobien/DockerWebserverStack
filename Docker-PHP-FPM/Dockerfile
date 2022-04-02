@@ -1,4 +1,4 @@
-FROM php:7-fpm
+FROM php:8-fpm
 
 RUN echo nameserver 1.1.1.1 > /etc/resolv.conf
 
