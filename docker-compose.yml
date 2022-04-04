@@ -81,6 +81,7 @@ services:
       
   acme.sh:
     image: neilpang/acme.sh:latest
+    restart: unless-stopped  
     volumes:
       - /data/containers/webserverstack/config/acme.sh/acme.sh-docker.sh:/acme.sh-docker.sh:ro
       - /data/containers/webserverstack/data/certificates:/acme.sh:z
