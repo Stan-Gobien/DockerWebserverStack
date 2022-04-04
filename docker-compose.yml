@@ -93,6 +93,7 @@ services:
       
   acme.sh:
     image: neilpang/acme.sh:latest
+    restart: unless-stopped
     networks:
       - mailserver-webserver-network    
     volumes:
