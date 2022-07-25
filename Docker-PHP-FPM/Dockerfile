@@ -1,6 +1,6 @@
 FROM php:8-fpm
 
-RUN echo nameserver 1.1.1.1 > /etc/resolv.conf
+
 
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
