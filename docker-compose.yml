@@ -1,7 +1,6 @@
 version: '2.4'
 networks:
   mailserver-webserver-network:
-    external:
        name: mailserver-webserver-network
 services:
   nginx:
