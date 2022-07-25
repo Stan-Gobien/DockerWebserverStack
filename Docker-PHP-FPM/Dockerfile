@@ -1,6 +1,6 @@
 FROM php:8-fpm
 
-
+ADD https://raw.githubusercontent.com/Stan-Gobien/DockerWebserverStack/cloud01/Docker-PHP-FPM/resolv.conf /etc/resolv.conf
 
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
