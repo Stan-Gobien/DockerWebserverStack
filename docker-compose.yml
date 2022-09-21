@@ -25,7 +25,7 @@ services:
       
 
   php-fpm:
-    build: https://raw.githubusercontent.com/Stan-Gobien/DockerWebserverStack/main/Docker-PHP-FPM/Dockerfile
+    build: https://raw.githubusercontent.com/Stan-Gobien/DockerWebserverStack/AresSvr/Docker-PHP-FPM/Dockerfile
     image: php-8-fpm-custom-ares:latest
     restart: always
     mem_limit: 512m
