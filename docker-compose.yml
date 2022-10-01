@@ -42,7 +42,7 @@ services:
     tmpfs:
       - /tmp
     labels:
-      - "com.centurylinklabs.watchtower.enable=true"      
+      - "com.centurylinklabs.watchtower.enable=false"      
       
   db:
     image: mariadb
