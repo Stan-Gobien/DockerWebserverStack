@@ -14,7 +14,7 @@ if [[ "$1" ]];
 then
         eval "$@"
 else
-        sleep 10
+        sleep 5
         FILE=/var/.dependenciesfinished
         if [ -f "$FILE" ]
         then
