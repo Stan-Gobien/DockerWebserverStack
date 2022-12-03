@@ -44,7 +44,8 @@ services:
     image: mariadb
     restart: always
     mem_limit: 512m
-    memswap_limit: 1024m    
+    memswap_limit: 1024m
+    hostname: db
     environment:
       MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
       MARIADB_DATABASE: default
