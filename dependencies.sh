@@ -17,8 +17,11 @@ echo "Install php extension"
 
 wget -O /usr/local/bin/install-php-extensions https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions
 chmod +x /usr/local/bin/install-php-extensions 
+sleep 2
 install-php-extensionsgettext mysqli apcu exif mcrypt zip
+sleep 2
 install-php-extensionsgettext mysqli apcu exif mcrypt zip
+sleep 5
 IPE_GD_WITHOUTAVIF=1 && install-php-extensions gd
 
 echo "Create file to let entrypoint know dependencies.sh has run"
