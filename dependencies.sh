@@ -8,7 +8,7 @@ apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y ssmtp inetut
 
 #Overwrite ssmtp.conf file
 mv /etc/ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf.orig
-mv /etc/ssmtp/ssmtp.conf.custom /etc/ssmtp/ssmtp.conf
+cp /etc/ssmtp/ssmtp.conf.custom /etc/ssmtp/ssmtp.conf
 
 sleep 10
 
