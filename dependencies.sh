@@ -10,6 +10,9 @@ apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y ssmtp inetut
 mv /etc/ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf.orig
 cp /etc/ssmtp/ssmtp.conf.custom /etc/ssmtp/ssmtp.conf
 
+#Hosts
+echo 172.20.0.2      db webserver-stack-db-1 >> /etc/hosts
+
 sleep 10
 
 #PHP extensions
