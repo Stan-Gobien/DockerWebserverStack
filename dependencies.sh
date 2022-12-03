@@ -1,6 +1,6 @@
 #DNS Nameserver
-echo "Create a resolv.conf file"
-echo nameserver 1.1.1.1 > /etc/resolv.conf
+#echo "Create a resolv.conf file"
+#echo nameserver 1.1.1.1 > /etc/resolv.conf
 
 #Packages
 echo "Install packages"
