@@ -9,12 +9,12 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - /data/containers/webserverstack/config/nginx/conf.d:/etc/nginx/conf.d:Z
-      - /data/containers/webserverstack/config/nginx/global:/etc/nginx/global:Z
-      - /data/containers/webserverstack/config/nginx/templates:/etc/nginx/templates:Z
-      - /data/containers/webserverstack/logs/nginx:/var/log/nginx:Z      
-      - /data/containers/webserverstack/data/certificates:/certificates:z
-      - /data/containers/webserverstack/data/vhosts:/data/vhosts:z
+      - /data/containers/webserverstack/config/nginx/conf.d:/etc/nginx/conf.d
+      - /data/containers/webserverstack/config/nginx/global:/etc/nginx/global
+      - /data/containers/webserverstack/config/nginx/templates:/etc/nginx/templates
+      - /data/containers/webserverstack/logs/nginx:/var/log/nginx  
+      - /data/containers/webserverstack/data/certificates:/certificates
+      - /data/containers/webserverstack/data/vhosts:/data/vhosts
     tmpfs:
       - /tmp
     depends_on:
@@ -22,7 +22,6 @@ services:
       - php-fpm
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
-      
 
   php-fpm:
     image: php:fpm
@@ -32,14 +31,15 @@ services:
     links:
       - db
     volumes:
-      - /data/containers/webserverstack/config/php-fpm/conf.d:/usr/local/etc/php/conf.d:Z
-      - /data/containers/webserverstack/data/vhosts:/data/vhosts:z
-      - /data/containers/webserverstack/config/php-fpm/ssmtp.conf:/etc/ssmtp/ssmtp.conf.custom:Z
+      - /etc/localtime:/etc/localtime:ro
+      - /data/containers/webserverstack/config/php-fpm/conf.d:/usr/local/etc/php/conf.d
+      - /data/containers/webserverstack/data/vhosts:/data/vhosts
+      - /data/containers/webserverstack/config/php-fpm/ssmtp.conf:/etc/ssmtp/ssmtp.conf.custom
       - /data/containers/webserverstack/scripts/entrypoint.sh:/bin/entrypoint.sh
     entrypoint: /bin/entrypoint.sh      
     labels:
       - "com.centurylinklabs.watchtower.enable=true"      
-      
+
   db:
     image: mariadb
     restart: always
@@ -52,8 +52,8 @@ services:
       MARIADB_PASSWORD: ${DB_PASSWORD}
       MARIADB_ROOT_HOST: ${DB_STACKNETWORK}
     volumes:
-      - /data/containers/webserverstack/data/mysql:/var/lib/mysql:Z
-      - /data/containers/webserverstack/backup/mysql:/backup:Z
+      - /data/containers/webserverstack/data/mysql:/var/lib/mysql
+      - /data/containers/webserverstack/backup/mysql:/backup
     tmpfs:
       - /tmp
     labels:
@@ -77,13 +77,13 @@ services:
       - "com.centurylinklabs.watchtower.enable=true"
     ports:
       - 8081:80
-      
+
   acme.sh:
     image: neilpang/acme.sh:latest
     restart: always 
     volumes:
       - /data/containers/webserverstack/config/acme.sh/acme.sh-docker.sh:/acme.sh-docker.sh:ro
-      - /data/containers/webserverstack/data/certificates:/acme.sh:z
+      - /data/containers/webserverstack/data/certificates:/acme.sh
     environment:
       ACME_HOME_DIR: "/acme.sh"
       # CloudFlare
