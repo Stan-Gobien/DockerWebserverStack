@@ -25,3 +25,4 @@ else
         fi
         sleep 5
 fi
+php-fpm
