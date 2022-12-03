@@ -25,7 +25,7 @@ services:
       
 
   php-fpm:
-    image: php-8-fpm:latest
+    image: php:fpm
     restart: always
     mem_limit: 512m
     memswap_limit: 1024m
