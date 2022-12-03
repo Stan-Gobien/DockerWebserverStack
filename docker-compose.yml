@@ -37,10 +37,8 @@ services:
       - /data/containers/webserverstack/config/php-fpm/ssmtp.conf:/etc/ssmtp/ssmtp.conf.custom:Z
       - /data/containers/webserverstack/scripts/entrypoint.sh:/bin/entrypoint.sh
     entrypoint: /bin/entrypoint.sh      
-    tmpfs:
-      - /tmp
     labels:
-      - "com.centurylinklabs.watchtower.enable=false"      
+      - "com.centurylinklabs.watchtower.enable=true"      
       
   db:
     image: mariadb
