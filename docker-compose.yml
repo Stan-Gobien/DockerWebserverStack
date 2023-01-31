@@ -26,7 +26,7 @@ services:
   php-fpm:
     image: php:fpm
     restart: always
-    mem_limit: 512m
+    mem_limit: 1024m
     memswap_limit: 1024m
     links:
       - db
