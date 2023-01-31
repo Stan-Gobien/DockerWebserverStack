@@ -25,9 +25,9 @@ sleep 2
 sleep 2
 /usr/local/bin/install-php-extensions apcu
 sleep 2
-/usr/local/bin/install-php-extensions xif
+/usr/local/bin/install-php-extensions exif
 sleep 2
-/usr/local/bin/install-php-extensions rypt
+/usr/local/bin/install-php-extensions mrypt
 sleep 2
 /usr/local/bin/install-php-extensions zip
 sleep 2
