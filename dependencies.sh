@@ -25,7 +25,7 @@ sleep 2
 sleep 2
 /usr/local/bin/install-php-extensions apcu
 sleep 2
-/usr/local/bin/install-php-extensions mrypt
+/usr/local/bin/install-php-extensions mcrypt
 sleep 2
 /usr/local/bin/install-php-extensions zip
 sleep 2
