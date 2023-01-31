@@ -42,7 +42,7 @@ services:
       - /etc/localtime:/etc/localtime:ro    
       - /data/containers/webserverstack/config/php-fpm/conf.d:/usr/local/etc/php/conf.d:Z
       - /data/containers/webserverstack/data/vhosts:/data/vhosts:z
-      - /data/containers/webserverstack/config/php-fpm/ssmtp.conf:/etc/ssmtp/ssmtp.conf:Z
+      - /data/containers/webserverstack/config/php-fpm/ssmtp.conf:/etc/ssmtp/ssmtp.conf.custom:Z
       - /data/containers/webserverstack/scripts/entrypoint.sh:/bin/entrypoint.sh:Z
     entrypoint: /bin/entrypoint.sh      
     tmpfs:
