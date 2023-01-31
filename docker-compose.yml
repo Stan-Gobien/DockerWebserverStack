@@ -30,13 +30,7 @@ services:
       
 
   php-fpm:
-  # TODO: CHANGE TO PHP-FPM with entrypoint script, like AresSvr does now
-  # https://docs.portainer.io/v/ce-2.9/faq/troubleshooting/can-i-build-an-image-while-deploying-a-stack-application-from-git0
-  # Workaround Use the link to the build file in the portainer build image editor and name it php-8-fpm-custom-cloud01:latest
-  # https://x.x.x.x:9443/#!/2/docker/images/build
-  # Then deploy the stack succesfully
-    build: https://raw.githubusercontent.com/Stan-Gobien/DockerWebserverStack/cloud01/Docker-PHP-FPM/Dockerfile
-    image: php-8-fpm-custom-cloud01:latest
+    image: php:fpm
     restart: always
     mem_limit: 512m
     memswap_limit: 1024m
@@ -45,13 +39,16 @@ services:
     networks:
       - mailserver-webserver-network      
     volumes:
+      - /etc/localtime:/etc/localtime:ro    
       - /data/containers/webserverstack/config/php-fpm/conf.d:/usr/local/etc/php/conf.d:Z
       - /data/containers/webserverstack/data/vhosts:/data/vhosts:z
       - /data/containers/webserverstack/config/php-fpm/ssmtp.conf:/etc/ssmtp/ssmtp.conf:Z
+      - /data/containers/webserverstack/scripts/entrypoint.sh:/bin/entrypoint.sh:Z
+    entrypoint: /bin/entrypoint.sh      
     tmpfs:
       - /tmp
     labels:
-      - "com.centurylinklabs.watchtower.enable=false"      
+      - "com.centurylinklabs.watchtower.enable=true"      
       
   db:
     image: mariadb
