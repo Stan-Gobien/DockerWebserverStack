@@ -41,6 +41,8 @@ sleep 2
 sleep 2
 /usr/local/bin/install-php-extensions xml
 sleep 5
+docker-php-ext-configure gd --with-jpeg && docker-php-ext-install gd
+sleep 10
 
 echo "Create file to let entrypoint know dependencies.sh has run"
 touch /var/.dependenciesfinished
