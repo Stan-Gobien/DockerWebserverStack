@@ -2,4 +2,6 @@
 
 cloud01 branch for Cloud01 server @ Hetzner
 
-REQUIRMENT: Copy entrypoint.sh to host path /data/containers/webserverstack/scripts/entrypoint.sh
+curl -o /data/containers/webserverstack/scripts/entrypoint.sh https://raw.githubusercontent.com/Stan-Gobien/DockerWebserverStack/cloud01/entrypoint.sh
+
+chmod +x /data/containers/webserverstack/scripts/entrypoint.sh
