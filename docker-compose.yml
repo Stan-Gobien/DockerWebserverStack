@@ -2,6 +2,10 @@ version: '2.4'
 services:
   nginx:
     image: nginx
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"        
     restart: always
     mem_limit: 256m
     memswap_limit: 512m
@@ -25,6 +29,10 @@ services:
 
   php-fpm:
     image: php:fpm
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"        
     restart: always
     mem_limit: 1024m
     memswap_limit: 1024m
@@ -42,7 +50,12 @@ services:
 
   db:
     image: mariadb
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"        
     restart: always
+    
     mem_limit: 512m
     memswap_limit: 1024m
     hostname: db
@@ -64,6 +77,10 @@ services:
       
   phpmyadmin:
     image: phpmyadmin
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"        
     restart: unless-stopped
     mem_limit: 256m
     memswap_limit: 512m   
@@ -83,6 +100,10 @@ services:
 
   acme.sh:
     image: neilpang/acme.sh:latest
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"        
     restart: always 
     volumes:
       - /data/containers/webserverstack/config/acme.sh/acme.sh-docker.sh:/acme.sh-docker.sh:ro
