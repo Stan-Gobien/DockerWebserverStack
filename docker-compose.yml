@@ -1,7 +1,8 @@
 version: '2.4'
 networks:
   mailserver-webserver-network:
-       name: mailserver-webserver-network
+       name: "mailserver-webserver-network"
+
 services:
   nginx:
     image: nginx
