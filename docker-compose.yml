@@ -60,6 +60,7 @@ services:
       
   db:
     image: mariadb
+    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW --character-set-server=utf8
     logging:
       options:
         max-size: "10m"
