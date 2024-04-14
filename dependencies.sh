@@ -11,7 +11,7 @@ mv /etc/ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf.orig
 cp /etc/ssmtp/ssmtp.conf.custom /etc/ssmtp/ssmtp.conf
 
 #Hosts
-echo 172.20.0.2      db webserver-stack-db-1 >> /etc/hosts
+#echo 172.20.0.2      db webserver-stack-db-1 >> /etc/hosts
 
 sleep 10
 
