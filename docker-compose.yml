@@ -83,6 +83,7 @@ services:
     volumes:
       - /data/containers/webserverstack/data/mysql:/var/lib/mysql:Z
       - /data/containers/webserverstack/backup/mysql:/backup:Z
+      - /data/containers/webserverstack/config/mysql:/etc/mysql/conf.d:Z
     tmpfs:
       - /tmp
     labels:
