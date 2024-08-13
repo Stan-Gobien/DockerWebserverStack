@@ -1,6 +1,6 @@
 /opt/webserverstack/logs/nginx/*.log {
-    weekly
-    rotate 4
+    daily
+    rotate 14
     compress
     delaycompress
     missingok
