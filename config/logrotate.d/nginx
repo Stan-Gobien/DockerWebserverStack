@@ -1,4 +1,4 @@
-/opt/webserverstack/logs/nginx/*.log {
+/data/containers/webserverstack/logs/nginx/*.log {
     daily
     rotate 14
     compress
