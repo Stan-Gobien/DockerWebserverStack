@@ -5,4 +5,8 @@
     delaycompress
     missingok
     notifempty
+    postrotate
+        docker restart $(docker ps -a -q --filter ancestor=nginx)
+        /bin/echo 'Restart docker container with image nginx after logrotate' || true
+    endscript
 }
