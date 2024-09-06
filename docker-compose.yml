@@ -62,7 +62,7 @@ services:
       
   db:
     image: mariadb
-    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=MIXED --log_bin_compress --character-set-server=utf8 --expire-logs-days=5 --max-binlog-size=100M
+    command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=MIXED --log_bin_compress=ON --character-set-server=utf8 --expire-logs-days=5 --max-binlog-size=100M
     logging:
       options:
         max-size: "10m"
