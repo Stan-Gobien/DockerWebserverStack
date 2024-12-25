@@ -1,12 +1,13 @@
 version: '2.4'
 networks:
-  mailserver-webserver-network:
-       name: "mailserver-webserver-network"
+  dms-dws.cloud01.gobien.be:
+       name: "dms-dws.cloud01.gobien.be"
        external: true
 
 services:
   nginx:
     image: nginx
+    name: web01
     logging:
       options:
         max-size: "10m"
@@ -18,7 +19,7 @@ services:
       - "80:80"
       - "443:443"
     networks:
-      - mailserver-webserver-network
+      - dms-dws.cloud01.gobien.be
     volumes:
       - /data/containers/webserverstack/config/nginx/conf.d:/etc/nginx/conf.d:Z
       - /data/containers/webserverstack/config/nginx/global:/etc/nginx/global:Z
@@ -37,6 +38,7 @@ services:
 
   php-fpm:
     image: php:fpm
+    name: php01
     logging:
       options:
         max-size: "10m"
@@ -47,7 +49,7 @@ services:
     links:
       - db
     networks:
-      - mailserver-webserver-network      
+      - dms-dws.cloud01.gobien.be      
     volumes:
       - /etc/localtime:/etc/localtime:ro    
       - /data/containers/webserverstack/config/php-fpm/conf.d:/usr/local/etc/php/conf.d:Z
@@ -62,6 +64,7 @@ services:
       
   db:
     image: mariadb
+    name: db01
     command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog_format=MIXED --binlog-row-image=minimal --log_bin_compress=ON --character-set-server=utf8 --expire_logs_days=5 --max-binlog-size=20M
     logging:
       options:
@@ -79,7 +82,7 @@ services:
       MARIADB_AUTO_UPGRADE: "1"
       MARIADB_INITDB_SKIP_TZINFO: "1"
     networks:
-      - mailserver-webserver-network      
+      - dms-dws.cloud01.gobien.be      
     volumes:
       - /data/containers/webserverstack/data/mysql:/var/lib/mysql:Z
       - /data/containers/webserverstack/backup/mysql:/backup:Z
@@ -91,6 +94,7 @@ services:
       
   phpmyadmin:
     image: phpmyadmin
+    name: phpmyadmin
     logging:
       options:
         max-size: "10m"
@@ -101,7 +105,7 @@ services:
     links:
       - db
     networks:
-      - mailserver-webserver-network      
+      - dms-dws.cloud01.gobien.be      
     environment:
       PMA_HOST: db
       PMA_PORT: 3306
@@ -116,13 +120,14 @@ services:
       
   acme.sh:
     image: neilpang/acme.sh:latest
+    name: acme01
     logging:
       options:
         max-size: "10m"
         max-file: "3"        
     restart: always
     networks:
-      - mailserver-webserver-network    
+      - dms-dws.cloud01.gobien.be    
     volumes:
       - /data/containers/webserverstack/config/acme.sh/acme.sh-docker.sh:/acme.sh-docker.sh:ro
       - /data/containers/webserverstack/data/certificates:/acme.sh:z
