@@ -56,7 +56,9 @@ services:
       - /data/containers/webserverstack/data/vhosts:/data/vhosts:z
       - /data/containers/webserverstack/config/php-fpm/ssmtp.conf:/etc/ssmtp/ssmtp.conf.custom:Z
       - /data/containers/webserverstack/scripts/entrypoint.sh:/bin/entrypoint.sh:Z
-    entrypoint: /bin/entrypoint.sh      
+    entrypoint: /bin/entrypoint.sh
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=1
     tmpfs:
       - /tmp
     labels:
