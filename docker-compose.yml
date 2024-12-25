@@ -120,7 +120,7 @@ services:
       
   acme.sh:
     image: neilpang/acme.sh:latest
-    name: acme01
+    container_name: acme01
     logging:
       options:
         max-size: "10m"
