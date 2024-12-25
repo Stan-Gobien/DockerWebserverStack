@@ -4,14 +4,19 @@
 
 #Packages
 echo "Install packages"
-apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y ssmtp inetutils-ping wget zlib1g-dev libpng-dev libjpeg-dev
+apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y inetutils-ping wget zlib1g-dev libpng-dev libjpeg-dev
+apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y ssmtp msmtp
 
 #Overwrite ssmtp.conf file
 mv /etc/ssmtp/ssmtp.conf /etc/ssmtp/ssmtp.conf.orig
 cp /etc/ssmtp/ssmtp.conf.custom /etc/ssmtp/ssmtp.conf
 
+#Overwrite msmtp.conf file
+mv /etc/msmtprc /etc/msmtprc.orig
+cp /etc/msmtprc.custom /etc/msmtprc
+
 #Hosts
-#echo 172.x.x.x      db webserver-stack-db-1 >> /etc/hosts
+#echo 172.x.x.x      db01 db01.dms-dws.cloud01.gobien.be >> /etc/hosts
 
 sleep 10
 
