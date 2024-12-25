@@ -7,7 +7,7 @@ networks:
 services:
   nginx:
     image: nginx
-    name: web01
+    container_name: web01
     logging:
       options:
         max-size: "10m"
@@ -38,7 +38,7 @@ services:
 
   php-fpm:
     image: php:fpm
-    name: php01
+    container_name: php01
     logging:
       options:
         max-size: "10m"
@@ -64,7 +64,7 @@ services:
       
   db:
     image: mariadb
-    name: db01
+    container_name: db01
     command: --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog_format=MIXED --binlog-row-image=minimal --log_bin_compress=ON --character-set-server=utf8 --expire_logs_days=5 --max-binlog-size=20M
     logging:
       options:
@@ -94,7 +94,7 @@ services:
       
   phpmyadmin:
     image: phpmyadmin
-    name: phpmyadmin
+    container_name: phpmyadmin
     logging:
       options:
         max-size: "10m"
