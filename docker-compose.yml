@@ -37,7 +37,7 @@ services:
       
 
   php-fpm:
-    image: php:fpm
+    image: php:fpm-bookworm
     container_name: php01
     logging:
       options:
